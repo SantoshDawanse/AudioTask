@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".frags.SettingsFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/settingfrag_vol_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="16dp"
+            android:text="@string/volumeBar" />
+
+
+        <ImageView
+            android:id="@+id/settingfrag_vol_min"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_below="@+id/settingfrag_vol_tv"
+            android:padding="8dp"
+            android:src="@drawable/minvol" />
+
+        <SeekBar
+            android:id="@+id/volumeSeekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/settingfrag_vol_min"
+            android:layout_alignBottom="@+id/settingfrag_vol_min"
+            android:layout_toStartOf="@+id/settingfrag_vol_max"
+            android:layout_toLeftOf="@+id/settingfrag_vol_max"
+            android:layout_toEndOf="@+id/settingfrag_vol_min"
+            android:layout_toRightOf="@+id/settingfrag_vol_min" />
+
+        <ImageView
+            android:id="@+id/settingfrag_vol_max"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignTop="@+id/settingfrag_vol_min"
+            android:layout_alignBottom="@+id/settingfrag_vol_min"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"
+            android:src="@drawable/maxvol" />
+
+
+        <TextView
+            android:id="@+id/settingfrag_intensity_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/volumeSeekbar"
+            android:layout_centerHorizontal="true"
+            android:padding="16dp"
+            android:text="@string/intensityBar" />
+
+        <ImageView
+            android:id="@+id/settingfrag_intensity_min"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_below="@+id/settingfrag_intensity_tv"
+            android:padding="8dp"
+            android:src="@drawable/signallow" />
+
+        <SeekBar
+            android:id="@+id/intensitySeekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/settingfrag_intensity_tv"
+            android:layout_alignTop="@+id/settingfrag_intensity_min"
+            android:layout_alignBottom="@+id/settingfrag_intensity_min"
+            android:layout_toStartOf="@+id/settingfrag_intensity_max"
+            android:layout_toLeftOf="@+id/settingfrag_intensity_max"
+            android:layout_toEndOf="@+id/settingfrag_intensity_min"
+            android:layout_toRightOf="@+id/settingfrag_intensity_min" />
+
+        <ImageView
+            android:id="@+id/settingfrag_intensity_max"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_below="@+id/settingfrag_intensity_tv"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"
+            android:src="@drawable/signalhigh" />
+    </RelativeLayout>
+
+</RelativeLayout>
