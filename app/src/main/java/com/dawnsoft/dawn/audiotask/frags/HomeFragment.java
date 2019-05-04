@@ -2,6 +2,7 @@ package com.dawnsoft.dawn.audiotask.frags;
 
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -28,7 +29,9 @@ public class HomeFragment extends Fragment {
     SwitchManager switchManager;
 
     //setting a image view as a switch
-    ImageView imageSwitch;
+    ImageView imageSwitch, redWaves;
+
+    AnimationDrawable animationDrawable;
 
     public MediaPlayer mediaPlayer;
     private AudioManager audioManager;
@@ -80,6 +83,10 @@ public class HomeFragment extends Fragment {
         handler = new Handler();
 
         audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+
+        redWaves = view.findViewById(R.id.fraghome_redwaves);
+        redWaves.setBackgroundResource(R.drawable.animate_red_waves);
+        animationDrawable = (AnimationDrawable) redWaves.getBackground();
 
         //image as a toggle button
         imageSwitch = view.findViewById(R.id.imageButton);
@@ -149,8 +156,15 @@ public class HomeFragment extends Fragment {
         if (switchManager.isChecked()){
             imageSwitch.setImageResource(R.drawable.orangesquito);
             playBuzzer();
+            redWaves.setVisibility(View.VISIBLE);
+
+            if (!animationDrawable.isRunning()) {
+                animationDrawable.start();
+            }
         } else {
             imageSwitch.setImageResource(R.drawable.bluesquito);
+            animationDrawable.stop();
+            redWaves.setVisibility(View.INVISIBLE);
             releaseMediaPlayer();
         }
     }
@@ -159,6 +173,7 @@ public class HomeFragment extends Fragment {
     public void playBuzzer(){
         releaseMediaPlayer();
         if (switchManager.isChecked()){
+
             mediaPlayer = MediaPlayer.create(getActivity(), R.raw.soundfile);
             mediaPlayer.start();
             mediaPlayer.setOnCompletionListener(completionListener);
@@ -173,6 +188,8 @@ public class HomeFragment extends Fragment {
 
             //abandon the audio focus
             audioManager.abandonAudioFocus(audioFocusChangeListener);
+
+            animationDrawable.stop();
         }
     }
 
